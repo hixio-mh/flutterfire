@@ -1,0 +1,26 @@
+
+# This is a basic workflow to help you get started with Actions
+
+name: Rebase
+
+# Controls when the action will run. 
+on:
+
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  update_fork:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: TobKed/github-forks-sync-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_repository: FirebaseExtended/flutterfire
+          target_repository: NevercodeHQ/flutterfire
+          upstream_branch: master
+          target_branch: master
+          force: true
+          tags: true
